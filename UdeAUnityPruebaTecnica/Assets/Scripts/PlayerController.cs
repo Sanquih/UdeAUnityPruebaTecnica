@@ -6,12 +6,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotationSpeed = 100f;
     private Animator animator;
 
-    void Start()
+    private void Start()
     {
         animator = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
         float moveX = Input.GetAxis("Horizontal");  // Rotation
         float moveZ = Input.GetAxis("Vertical");    // Movement forward
