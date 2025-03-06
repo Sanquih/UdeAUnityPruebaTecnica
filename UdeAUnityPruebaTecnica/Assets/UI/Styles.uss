@@ -1,0 +1,39 @@
+#Inventory.hidden {
+    translate: 0 100%;
+}
+
+.item-inventory {
+    background-color: rgb(255, 255, 255);
+}
+
+.sprite {
+    flex-grow: 1;
+    height: 90%;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.col {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.background-gray {
+    background-color: rgba(66, 66, 66, 0.86);
+}
+
+.background-black {
+    background-color: rgb(33, 33, 33);
+}
+
+.label-normal {
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    font-size: 70px;
+}

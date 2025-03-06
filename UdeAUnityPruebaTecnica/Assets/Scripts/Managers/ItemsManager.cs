@@ -1,13 +1,19 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemsManager : MonoBehaviour
 {
+    #region Variables
     private List<int> itemsTaken = new List<int>();
     public List<int> ItemsTaken
     {
         get => itemsTaken;
     }
+    #endregion
+
+    #region Functions
+    public event Action<int> OnItemTaken;
 
     public bool IsItemTaken(int id)
     {
@@ -20,9 +26,12 @@ public class ItemsManager : MonoBehaviour
         {
             itemsTaken.Add(id);
             SaveManager.Instance.SaveItemsTaken(itemsTaken);
+            OnItemTaken?.Invoke(itemsTaken.Count);
         }
     }
+    #endregion
 
+    #region Singleton
     public static ItemsManager Instance;
     private void Awake()
     {
@@ -30,9 +39,10 @@ public class ItemsManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            itemsTaken = SaveManager.Instance.LoadItemsTaken();
+            Debug.Log(ItemsTaken.Count);
         }
         else Destroy(gameObject);
-        itemsTaken = SaveManager.Instance.LoadItemsTaken();
-        Debug.Log(ItemsTaken.Count);
     }
+    #endregion
 }
