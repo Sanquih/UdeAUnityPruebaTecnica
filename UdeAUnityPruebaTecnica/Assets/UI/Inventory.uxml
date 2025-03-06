@@ -1,0 +1,9 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles.uss?fileID=7433441132597879392&amp;guid=b8039ecc6a833b04296e149cfb530f95&amp;type=3#Styles" />
+    <engine:VisualElement name="Inventory" class="background-black col hidden" style="flex-grow: 1; padding-top: 1%; padding-right: 1%; padding-bottom: 1%; padding-left: 1%; transform-origin: top; transition-duration: 1s; transition-timing-function: ease-out;">
+        <engine:Button text="Close" name="ButtonClose" selectable="false" class="label-normal background-gray" style="margin-top: 0; margin-right: 0; margin-bottom: auto; margin-left: auto; height: 10%; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; padding-right: 17px; padding-left: 17px; padding-top: 12px; padding-bottom: 12px;" />
+        <engine:ScrollView horizontal-scroller-visibility="Hidden" name="InventoryScroll" style="height: 85%; width: 100%;">
+            <engine:VisualElement name="InventoryContent" class="row" style="flex-wrap: wrap;" />
+        </engine:ScrollView>
+    </engine:VisualElement>
+</engine:UXML>
