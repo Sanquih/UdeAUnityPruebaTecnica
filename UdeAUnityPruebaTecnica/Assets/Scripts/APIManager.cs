@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -7,17 +6,9 @@ public class APIManager : MonoBehaviour
 {
     private string apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 
-    void Start()
+    public IEnumerator GetPokemonData(int id, System.Action<Pokemon> callback)
     {
-        for (int i = 1; i <= 50; i++)
-        {
-            // StartCoroutine(GetPokemonData(i));
-        }
-    }
-
-    IEnumerator GetPokemonData(int id)
-    {
-        string url = $"https://pokeapi.co/api/v2/pokemon/{id}";
+        string url = $"{apiUrl}{id}";
 
         using (UnityWebRequest request = UnityWebRequest.Get(url))
         {
@@ -25,19 +16,18 @@ public class APIManager : MonoBehaviour
 
             if (request.result == UnityWebRequest.Result.Success)
             {
-                // Debug.Log($"Datos del Pokémon {id}: {request.downloadHandler.text}");
                 Pokemon pokemon = JsonUtility.FromJson<Pokemon>(request.downloadHandler.text);
-                // Debug.Log($"Nombre: {pokemon.name}, ID: {pokemon.id}");
-                // StartCoroutine(LoadPokemonSprite(pokemon.sprites.front_default, GetComponent<Renderer>()));
+                callback?.Invoke(pokemon);
             }
             else
             {
-                Debug.LogError($"Error al obtener el Pokémon {id}: {request.error}");
+                Debug.LogError($"Error: {request.error}");
+                callback?.Invoke(null);
             }
         }
     }
 
-    IEnumerator LoadPokemonSprite(string imageUrl, Renderer renderer)
+    public IEnumerator LoadPokemonSprite(string imageUrl, System.Action<Texture2D> callback)
     {
         using (UnityWebRequest request = UnityWebRequestTexture.GetTexture(imageUrl))
         {
@@ -46,14 +36,16 @@ public class APIManager : MonoBehaviour
             if (request.result == UnityWebRequest.Result.Success)
             {
                 Texture2D texture = DownloadHandlerTexture.GetContent(request);
-                renderer.material.mainTexture = texture;
+                callback?.Invoke(texture);
             }
             else
             {
                 Debug.LogError("Error al cargar la imagen: " + request.error);
+                callback?.Invoke(null);
             }
         }
     }
+
 
     public static APIManager Instance;
     private void Awake()
@@ -65,18 +57,4 @@ public class APIManager : MonoBehaviour
         }
         else Destroy(gameObject);
     }
-}
-
-[System.Serializable]
-public class Pokemon
-{
-    public string name;
-    public int id;
-    public SpriteInfo sprites;
-}
-
-[System.Serializable]
-public class SpriteInfo
-{
-    public string front_default;
 }

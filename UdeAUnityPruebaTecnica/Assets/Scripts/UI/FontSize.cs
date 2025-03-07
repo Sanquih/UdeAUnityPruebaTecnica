@@ -6,8 +6,9 @@ public class FontSize : MonoBehaviour
     private UIDocument uiDocument;
 
     private const float baseWidth = 1920f;
-    private const float baseFontSizeNormal = 70f; 
-    private float previousWidthFactor = -1f; 
+    private const float baseFontSizeNormal = 70f;
+    private const float baseFontSizeTitle = 100f;
+    private float previousWidthFactor = -1f;
 
     private void OnEnable()
     {
@@ -32,10 +33,16 @@ public class FontSize : MonoBehaviour
 
         var root = uiDocument.rootVisualElement;
         var labelsNormal = root.Query<Label>().Class("label-normal").Build();
+        var labelsTitle = root.Query<Label>().Class("label-title").Build();
 
         foreach (var label in labelsNormal)
         {
             label.style.fontSize = baseFontSizeNormal * widthFactor;
+        }
+
+        foreach (var label in labelsTitle)
+        {
+            label.style.fontSize = baseFontSizeTitle * widthFactor;
         }
     }
 
