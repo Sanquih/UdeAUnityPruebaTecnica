@@ -2,20 +2,24 @@
     translate: 0 100%;
 }
 
+#PokemonIfoContainer.hidden {
+    translate: 0 100%;
+}
+
 .item-inventory {
     background-color: rgb(255, 255, 255);
+}
+
+.item-image {
+    flex-grow: 1;
+    -unity-background-scale-mode: scale-to-fit;
+    cursor: url("project://database/Assets/Sprites/grifo%201.png?fileID=2800000&guid=8ad3145ca8c327f4dbb2067b042a743f&type=3#grifo 1");
 }
 
 .sprite {
     flex-grow: 1;
     height: 90%;
     -unity-background-scale-mode: scale-to-fit;
-}
-
-.col {
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
 }
 
 .row {
@@ -30,10 +34,54 @@
 
 .background-black {
     background-color: rgb(33, 33, 33);
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+}
+
+.label-title {
+    color: rgb(255, 255, 255);
+    font-size: 100px;
 }
 
 .label-normal {
     color: rgb(255, 255, 255);
     -unity-text-align: middle-center;
     font-size: 70px;
+}
+
+.pokemon-image {
+    height: 100%;
+    width: 50%;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.col {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.close-btn {
+    top: 10px;
+    right: 10px;
+    height: 10%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    cursor: url("project://database/Assets/Sprites/grifo%201.png?fileID=2800000&guid=8ad3145ca8c327f4dbb2067b042a743f&type=3#grifo 1");
+    position: absolute;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
 }
