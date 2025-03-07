@@ -57,6 +57,13 @@ public class ItemsManager : MonoBehaviour
             }));
         }
     }
+
+    public void ClearItemsTaken()
+    {
+        itemsTaken = new List<int>();
+        Pokemons = new List<Pokemon>();
+        SaveManager.Instance.RestartGame();
+    }
     #endregion
 
     #region Singleton

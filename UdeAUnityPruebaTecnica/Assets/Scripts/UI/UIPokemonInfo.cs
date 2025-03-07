@@ -27,7 +27,7 @@ public class UIPokemonInfo : MonoBehaviour
         PokemonHeight = root.Q<Label>("PokemonHeight");
         PokemonWeight = root.Q<Label>("PokemonWeight");
         
-        Button buttonClose = root.Q<Button>("ButtonClose");
+        Button buttonClose = PokemonIfoContainer.Q<Button>("ButtonClose");
         buttonClose.RegisterCallback<ClickEvent>(evt => CloseOpenInventory());
     }
 
