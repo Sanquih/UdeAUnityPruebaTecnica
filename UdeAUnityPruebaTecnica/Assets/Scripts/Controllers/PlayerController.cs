@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -8,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(SetCameraTargetAfterDelay(0.5f, transform));
         animator = GetComponent<Animator>();
     }
 
@@ -26,5 +28,11 @@ public class PlayerController : MonoBehaviour
 
             animator.SetFloat("movement", Mathf.Abs(moveZ));
         }
+    }
+
+    IEnumerator SetCameraTargetAfterDelay(float delay, Transform target)
+    {
+        yield return new WaitForSeconds(delay);
+        Camera.main.transform.GetComponent<CameraFollow>().SetTarget(target);
     }
 }
