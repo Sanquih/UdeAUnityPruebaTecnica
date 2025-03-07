@@ -14,7 +14,6 @@ public class ItemController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log($"¡Recogiste un objeto! ID: {id}");
             Disappear();
             ItemsManager.Instance.AddItemTaken(id);
         }
