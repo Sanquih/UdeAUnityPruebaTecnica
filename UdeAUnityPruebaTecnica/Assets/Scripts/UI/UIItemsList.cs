@@ -13,7 +13,8 @@ public class UIItemsList : MonoBehaviour
     private void OnEnable()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
-        ScrollView inventoryScroll = root.Q<ScrollView>("InventoryScroll");
+        VisualElement Inventory = root.Q<VisualElement>("Inventory");
+        ScrollView inventoryScroll = Inventory.Q<ScrollView>("InventoryScroll");
         inventoryContent = inventoryScroll.Q<VisualElement>("InventoryContent");
 
         if (ItemsManager.Instance.ItemsTaken.Count > 0)
@@ -25,8 +26,11 @@ public class UIItemsList : MonoBehaviour
 
         ItemsManager.Instance.OnPokemonInfo += AddItemList;
 
-        Button buttonClose = root.Q<Button>("ButtonClose");
+        Button buttonClose = Inventory.Q<Button>("ButtonClose");
         buttonClose.RegisterCallback<ClickEvent>(evt => CloseOpenInventory());
+
+        Button restartProgress = Inventory.Q<Button>("RestartProgress");
+        restartProgress.RegisterCallback<ClickEvent>(evt => ItemsManager.Instance.ClearItemsTaken());
     }
 
     private void OnDisable()
@@ -34,9 +38,9 @@ public class UIItemsList : MonoBehaviour
         ItemsManager.Instance.OnPokemonInfo -= AddItemList;
     }
 
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I)) CloseOpenInventory();
+        if (Input.GetKeyDown(KeyCode.E)) CloseOpenInventory();
     }
 
     private void CreateItemsList(List<Pokemon> items)
@@ -80,8 +84,7 @@ public class UIItemsList : MonoBehaviour
                 }));
 
         newItem.RegisterCallback<ClickEvent>(
-            evt => GameObject
-            .Find("UIPokemonInfo")
+            evt => gameObject
             .GetComponent<UIPokemonInfo>()
             .ShowPokemonInfo(item));
 

@@ -9,9 +9,7 @@ public class UIItemCounter : MonoBehaviour
 
     private void OnEnable()
     {
-        UIDocument uiDocument = GetComponent<UIDocument>();
-        if (uiDocument == null) return;
-        var root = uiDocument.rootVisualElement;
+        var root = GetComponent<UIDocument>().rootVisualElement;
         currenItemsAmount = root.Q<Label>("CurrenItemsAmount");
         totalItems = root.Q<Label>("TotalItems");
 
@@ -29,7 +27,7 @@ public class UIItemCounter : MonoBehaviour
     private void SetCurrenItemsAmount(int newAmount)
     {
         if (newAmount >= totalItemsAmount) currenItemsAmount.text = totalItemsAmount.ToString();
-        else currenItemsAmount.text = newAmount.ToString();
+        else currenItemsAmount.text = $"{newAmount.ToString()} ";
     }
 
     private void SetTotalItems()
@@ -37,6 +35,6 @@ public class UIItemCounter : MonoBehaviour
         GameObject items = GameObject.Find("Items");
 
         if (items != null) totalItemsAmount = items.transform.childCount;
-        totalItems.text = $"/ {totalItemsAmount}";
+        totalItems.text = $"/{totalItemsAmount}";
     }
 }

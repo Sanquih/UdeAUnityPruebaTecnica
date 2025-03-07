@@ -8,6 +8,12 @@
 
 .item-inventory {
     background-color: rgb(255, 255, 255);
+    transition-duration: 0.7s;
+    transition-timing-function: ease-out;
+}
+
+.item-inventory:hover {
+    scale: 1.1 1.1;
 }
 
 .item-image {
@@ -40,6 +46,7 @@
 
 .label-title {
     color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
     font-size: 100px;
 }
 
@@ -47,6 +54,12 @@
     color: rgb(255, 255, 255);
     -unity-text-align: middle-center;
     font-size: 70px;
+}
+
+.label-little {
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    font-size: 40px;
 }
 
 .pokemon-image {
@@ -84,4 +97,35 @@
     padding-right: 15px;
     padding-bottom: 10px;
     padding-left: 15px;
+    -unity-font-style: bold;
+    transition-duration: 0.7s;
+    transition-timing-function: ease-out;
+}
+
+.close-btn:hover {
+    scale: 1.1 1.1;
+}
+
+.helper-name {
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.key {
+    width: 150px;
+    height: 150px;
+    border-top-width: 11px;
+    border-right-width: 11px;
+    border-bottom-width: 11px;
+    border-left-width: 11px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
 }

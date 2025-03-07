@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6238575338495963342}
   - component: {fileID: 509623700760931545}
   - component: {fileID: 926520060389211715}
+  - component: {fileID: 8676909988427777911}
   m_Layer: 5
   m_Name: UIInventory
   m_TagString: Untagged
@@ -62,5 +63,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2093fcaf5e2fa044d8859b142d77af27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8676909988427777911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851439614746521645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d185c1f1c931d84a9822d037dbbbbf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
