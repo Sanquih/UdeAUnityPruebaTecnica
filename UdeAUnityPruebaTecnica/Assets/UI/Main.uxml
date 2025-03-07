@@ -1,0 +1,27 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles.uss?fileID=7433441132597879392&amp;guid=b8039ecc6a833b04296e149cfb530f95&amp;type=3#Styles" />
+    <engine:VisualElement name="ItemsCounterContainer" class="items-counter-container row background-gray" style="align-self: flex-end; padding-top: 0; padding-right: 1%; padding-bottom: 0; padding-left: 1%; border-bottom-left-radius: 20px;">
+        <engine:Label text="25 " name="CurrenItemsAmount" class="label-normal" style="-unity-font-style: bold;" />
+        <engine:Label text="/25" name="TotalItems" class="label-normal" style="-unity-font-style: bold;" />
+    </engine:VisualElement>
+    <engine:VisualElement name="Keys" class="col" style="position: absolute; height: 100%; left: 5%;">
+        <engine:VisualElement name="KeysMuve" class="col" style="width: 500px; height: 450px;">
+            <engine:Label text="Muve" class="label-normal background-gray" style="top: 0; position: absolute; padding-right: 10px; padding-left: 10px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; -unity-font-style: bold;" />
+            <engine:VisualElement name="KeyA" class="background-gray key" style="position: absolute; top: auto; left: 0; bottom: 0;">
+                <engine:Label text="A" name="LabelA" class="label-title" style="-unity-font-style: bold;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="KeyW" class="background-gray key" style="position: absolute; top: auto; left: auto; bottom: 37%;">
+                <engine:Label text="W" name="LabelW" class="label-title" style="-unity-font-style: bold;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="KeyD" class="background-gray key" style="position: absolute; top: auto; left: auto; bottom: 0; right: 0;">
+                <engine:Label text="D" name="LabelD" class="label-title" style="-unity-font-style: bold;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement name="KeysInventory" class="col" style="width: 500px; height: 300px;">
+            <engine:Label text="Inventory" class="label-normal background-gray" style="padding-right: 10px; padding-left: 10px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; -unity-font-style: bold;" />
+            <engine:VisualElement name="KeyE" class="background-gray key">
+                <engine:Label text="E" name="LabelE" class="label-title" style="-unity-font-style: bold;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
