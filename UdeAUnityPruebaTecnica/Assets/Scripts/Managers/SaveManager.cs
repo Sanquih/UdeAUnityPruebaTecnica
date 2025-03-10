@@ -1,7 +1,6 @@
 using UnityEngine;
 using BayatGames.SaveGameFree;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
@@ -19,10 +18,9 @@ public class SaveManager : MonoBehaviour
         SaveGame.Save(ITEMS_TAKEN_KEY, value);
     }
 
-    public void RestartGame()
+    public void ClearData()
     {
         SaveGame.Clear();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public static SaveManager Instance;

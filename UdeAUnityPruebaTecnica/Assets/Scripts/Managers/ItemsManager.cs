@@ -62,7 +62,6 @@ public class ItemsManager : MonoBehaviour
     {
         itemsTaken = new List<int>();
         Pokemons = new List<Pokemon>();
-        SaveManager.Instance.RestartGame();
     }
     #endregion
 

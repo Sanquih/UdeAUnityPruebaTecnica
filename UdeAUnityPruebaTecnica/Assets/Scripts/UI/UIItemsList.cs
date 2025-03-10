@@ -29,8 +29,6 @@ public class UIItemsList : MonoBehaviour
         Button buttonClose = Inventory.Q<Button>("ButtonClose");
         buttonClose.RegisterCallback<ClickEvent>(evt => CloseOpenInventory());
 
-        Button restartProgress = Inventory.Q<Button>("RestartProgress");
-        restartProgress.RegisterCallback<ClickEvent>(evt => ItemsManager.Instance.ClearItemsTaken());
     }
 
     private void OnDisable()
@@ -45,13 +43,18 @@ public class UIItemsList : MonoBehaviour
 
     private void CreateItemsList(List<Pokemon> items)
     {
-        inventoryContent.Clear();
+        ClearInventoryContent();
 
         foreach (Pokemon item in items)
         {
             VisualElement itemElement = CreateItemsList(item);
             inventoryContent.Add(itemElement);
         }
+    }
+
+    public void ClearInventoryContent()
+    {
+        inventoryContent.Clear();
     }
 
     private VisualElement CreateItemsList(Pokemon item)
@@ -97,7 +100,7 @@ public class UIItemsList : MonoBehaviour
         inventoryContent.Add(itemElement);
     }
 
-    private void CloseOpenInventory()
+    public void CloseOpenInventory()
     {
         VisualElement inventory = root.Q<VisualElement>("Inventory");
         if (!hidden) inventory.AddToClassList("hidden");

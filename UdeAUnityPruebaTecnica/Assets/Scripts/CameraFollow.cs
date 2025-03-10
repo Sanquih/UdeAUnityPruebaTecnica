@@ -29,6 +29,15 @@ public class CameraFollow : MonoBehaviour
         StartCoroutine(SmoothlyIncreaseSpeed(5f, 20f));
     }
 
+    public void ResetCamera()
+    {
+        followSpeed = 1f;
+        rotationSpeed = 1f;
+        transform.localPosition = new Vector3(0, 25, 0);
+        transform.localRotation = new Quaternion(90f, 0f, 0f, 0f);
+        StartCoroutine(SmoothlyIncreaseSpeed(5f, 20f));
+    }
+
     IEnumerator SmoothlyIncreaseSpeed(float duration, float targetSpeed)
     {
         yield return new WaitForSeconds(3f);
