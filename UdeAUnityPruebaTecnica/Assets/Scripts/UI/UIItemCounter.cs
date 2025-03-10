@@ -24,7 +24,7 @@ public class UIItemCounter : MonoBehaviour
         ItemsManager.Instance.OnItemTaken -= SetCurrenItemsAmount;
     }
 
-    private void SetCurrenItemsAmount(int newAmount)
+    public void SetCurrenItemsAmount(int newAmount)
     {
         if (newAmount >= totalItemsAmount) currenItemsAmount.text = totalItemsAmount.ToString();
         else currenItemsAmount.text = $"{newAmount.ToString()} ";

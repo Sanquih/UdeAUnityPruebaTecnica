@@ -7,6 +7,8 @@ public class UIHelpers : MonoBehaviour
 {
     VisualElement root;
     UIDocument uiDocument;
+    VisualElement end;
+    Label endLabel;
 
     private bool isAnimating = true;
 
@@ -17,6 +19,12 @@ public class UIHelpers : MonoBehaviour
         uiDocument = GetComponent<UIDocument>();
         root = uiDocument.rootVisualElement;
 
+        end = root.Q<VisualElement>("End");
+        endLabel = root.Q<Label>("EndLabel");
+        endLabel.style.opacity = 0f;
+        EndLabel(ItemsManager.Instance.ItemsTaken.Count);
+        ItemsManager.Instance.OnItemTaken += EndLabel;
+
         ItemsManager.Instance.OnPokemonInfo += ShowName;
 
         StartKeyAnimation();
@@ -24,6 +32,7 @@ public class UIHelpers : MonoBehaviour
 
     private void OnDisable()
     {
+        ItemsManager.Instance.OnItemTaken -= EndLabel;
         ItemsManager.Instance.OnPokemonInfo -= ShowName;
     }
 
@@ -50,7 +59,7 @@ public class UIHelpers : MonoBehaviour
     {
         bool hasAWD = keysPressed.Contains("A") && keysPressed.Contains("W") && keysPressed.Contains("D");
 
-        if (hasAWD) DisappearElement("KeysMuve");
+        if (hasAWD) DisappearElement("KeysMove");
 
         if (hasAWD && keysPressed.Contains("E")) StopKeyAnimation();
     }
@@ -115,6 +124,13 @@ public class UIHelpers : MonoBehaviour
         }
     }
 
+    private IEnumerator AnimateEnd(VisualElement key)
+    {
+        yield return StartCoroutine(FadeOpacity(key, 0f, 1f, 1f));
+        yield return new WaitForSeconds(5f);
+        yield return StartCoroutine(FadeOpacity(key, 1f, 0f, 1f));
+    }
+
     private IEnumerator FadeOpacity(VisualElement element, float startOpacity, float endOpacity, float duration)
     {
         float elapsed = 0f;
@@ -144,4 +160,15 @@ public class UIHelpers : MonoBehaviour
         }
     }
 
+    private void EndLabel(int amount)
+    {
+        GameObject items = GameObject.Find("Items");
+        if (amount >= items.transform.childCount)
+        {
+            StartCoroutine(AnimateEnd(endLabel));
+            isAnimating = false;
+            DisappearElement("KeysInventory");
+            DisappearElement("KeysMove");
+        }
+    }
 }

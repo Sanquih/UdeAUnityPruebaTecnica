@@ -44,12 +44,6 @@
     transition-timing-function: ease-out;
 }
 
-.label-title {
-    color: rgb(255, 255, 255);
-    -unity-text-align: middle-center;
-    font-size: 100px;
-}
-
 .label-normal {
     color: rgb(255, 255, 255);
     -unity-text-align: middle-center;
@@ -60,6 +54,12 @@
     color: rgb(255, 255, 255);
     -unity-text-align: middle-center;
     font-size: 40px;
+}
+
+.label-title {
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    font-size: 100px;
 }
 
 .pokemon-image {
@@ -111,6 +111,10 @@
     padding-bottom: 15px;
     padding-top: 10px;
     padding-left: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 .key {

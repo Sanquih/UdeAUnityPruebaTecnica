@@ -5,8 +5,8 @@
         <engine:Label text="/25" name="TotalItems" class="label-normal" style="-unity-font-style: bold;" />
     </engine:VisualElement>
     <engine:VisualElement name="Keys" class="col" style="position: absolute; height: 100%; left: 5%;">
-        <engine:VisualElement name="KeysMuve" class="col" style="width: 500px; height: 450px;">
-            <engine:Label text="Muve" class="label-normal background-gray" style="top: 0; position: absolute; padding-right: 10px; padding-left: 10px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; -unity-font-style: bold;" />
+        <engine:VisualElement name="KeysMove" class="col" style="width: 500px; height: 450px;">
+            <engine:Label text="Move" class="label-normal background-gray" style="top: 0; position: absolute; padding-right: 10px; padding-left: 10px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; -unity-font-style: bold;" />
             <engine:VisualElement name="KeyA" class="background-gray key" style="position: absolute; top: auto; left: 0; bottom: 0;">
                 <engine:Label text="A" name="LabelA" class="label-title" style="-unity-font-style: bold;" />
             </engine:VisualElement>
@@ -23,5 +23,8 @@
                 <engine:Label text="E" name="LabelE" class="label-title" style="-unity-font-style: bold;" />
             </engine:VisualElement>
         </engine:VisualElement>
+    </engine:VisualElement>
+    <engine:VisualElement name="End" style="position: absolute; right: auto; top: auto; width: 100%; height: 100%; align-items: center; justify-content: center;">
+        <engine:Label text="¡Congratulations!&#10;¡You have found all the items!" name="EndLabel" class="background-gray label-normal" style="padding-right: 10px; padding-left: 10px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; -unity-font-style: bold;" />
     </engine:VisualElement>
 </engine:UXML>

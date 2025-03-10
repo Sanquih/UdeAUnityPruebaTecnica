@@ -35,4 +35,10 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Camera.main.transform.GetComponent<CameraFollow>().SetTarget(target);
     }
+
+    public void Init()
+    {
+        transform.localPosition = new Vector3(0, 1, 11);
+        transform.localRotation = new Quaternion(0f, 180f, 0f, 0f);
+    }
 }

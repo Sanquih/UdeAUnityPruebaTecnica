@@ -9,7 +9,7 @@ public class ItemController : MonoBehaviour
 
     private void Awake()
     {
-        if (ItemsManager.Instance.IsItemTaken(id)) Disappear(true);
+        if (ItemsManager.Instance.IsItemTaken(id)) Disappear();
         else PlayRandomAudio();
     }
 
@@ -34,14 +34,8 @@ public class ItemController : MonoBehaviour
         }
     }
 
-    private void Disappear(bool inAwake = false)
+    private void Disappear()
     {
-        if (inAwake)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         GetComponent<MeshCollider>().enabled = false;
         foreach (Transform child in transform)
             child.gameObject.SetActive(false);
@@ -54,12 +48,29 @@ public class ItemController : MonoBehaviour
         FadeOutAudio(audioSource);
     }
 
-    public void FadeOutAudio(AudioSource audioSource, float duration = 1f)
+    public void Appear()
     {
-        StartCoroutine(FadeOutCoroutine(audioSource, duration));
+        GetComponent<MeshCollider>().enabled = true;
+        foreach (Transform child in transform)
+            child.gameObject.SetActive(true);
+
+
+        ParticleSystem ps = GetComponent<ParticleSystem>();
+        var mainModule = ps.main;
+        mainModule.loop = true;
+        ps.Play();
+
+        PlayRandomAudio();
+        FadeOutAudio(audioSource, 1f, 1f);
     }
 
-    private IEnumerator FadeOutCoroutine(AudioSource audioSource, float duration)
+    public void FadeOutAudio(AudioSource audioSource, float duration = 1f, float endVol = 0f)
+    {
+        if (audioSource != null)
+            StartCoroutine(FadeOutCoroutine(audioSource, duration, endVol));
+    }
+
+    private IEnumerator FadeOutCoroutine(AudioSource audioSource, float duration, float endVol)
     {
         float startVolume = audioSource.volume;
         float elapsedTime = 0f;
@@ -67,11 +78,11 @@ public class ItemController : MonoBehaviour
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            audioSource.volume = Mathf.Lerp(startVolume, 0f, elapsedTime / duration);
+            audioSource.volume = Mathf.Lerp(startVolume, endVol, elapsedTime / duration);
             yield return null;
         }
 
-        audioSource.volume = 0f;
-        audioSource.Stop();
+        audioSource.volume = endVol;
+        if (endVol <= 0f) audioSource.Stop();
     }
 }
