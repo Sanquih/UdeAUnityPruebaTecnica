@@ -26,7 +26,7 @@ public class CameraFollow : MonoBehaviour
         followSpeed = 1f;
         rotationSpeed = 1f;
         target = newTarget;
-        StartCoroutine(SmoothlyIncreaseSpeed(5f, 10f));
+        StartCoroutine(SmoothlyIncreaseSpeed(5f, 20f));
     }
 
     IEnumerator SmoothlyIncreaseSpeed(float duration, float targetSpeed)

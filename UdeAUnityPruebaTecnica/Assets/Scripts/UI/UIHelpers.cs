@@ -50,7 +50,7 @@ public class UIHelpers : MonoBehaviour
     {
         bool hasAWD = keysPressed.Contains("A") && keysPressed.Contains("W") && keysPressed.Contains("D");
 
-        if (hasAWD) DisappearElement("KeysMuve");
+        if (hasAWD) DisappearElement("KeysMove");
 
         if (hasAWD && keysPressed.Contains("E")) StopKeyAnimation();
     }

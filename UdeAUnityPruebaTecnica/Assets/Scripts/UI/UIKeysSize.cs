@@ -23,8 +23,8 @@ public class UIKeysSize : MonoBehaviour
         const float baseWidth = 1920f;
         const float baseHeight = 1080f;
         const float baseKeys = 150f;
-        const float baseKeysMuveWidth = 500f;
-        const float baseKeysMuveHeight = 450f;
+        const float baseKeysMoveWidth = 500f;
+        const float baseKeysMoveHeight = 450f;
         const float baseKeysInventoryWidth = 500f;
         const float baseKeysInventoryHeight = 300f;
         const float baseBorderSolid = 11f;
@@ -38,7 +38,7 @@ public class UIKeysSize : MonoBehaviour
         previousHeightFactor = widthFactor;
 
         var keys = root.Query<VisualElement>().Class("key").Build();
-        var keysMuve = root.Q<VisualElement>("KeysMuve");
+        var keysMove = root.Q<VisualElement>("KeysMove");
         var keysInventory = root.Q<VisualElement>("KeysInventory");
 
         foreach (var key in keys)
@@ -51,8 +51,8 @@ public class UIKeysSize : MonoBehaviour
             key.style.borderRightWidth = baseBorderSolid * widthFactor;
         }
 
-        keysMuve.style.width = baseKeysMuveWidth * widthFactor;
-        keysMuve.style.height = baseKeysMuveHeight * heightFactor;
+        keysMove.style.width = baseKeysMoveWidth * widthFactor;
+        keysMove.style.height = baseKeysMoveHeight * heightFactor;
 
         keysInventory.style.width = baseKeysInventoryWidth * widthFactor;
         keysInventory.style.height = baseKeysInventoryHeight * heightFactor;
